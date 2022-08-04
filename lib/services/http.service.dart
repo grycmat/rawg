@@ -5,4 +5,6 @@ import 'package:rawg/models/api_response/api_response.dart';
 
 class HttpService {
   Future<Response>? getGames() => dio.get('${dotenv.env['API']}/games');
+  Future<Response>? getGameDetails(int id) =>
+      dio.get('${dotenv.env['API']}/games/$id');
 }
