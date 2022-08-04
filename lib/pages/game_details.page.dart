@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:rawg/models/api_response/result.dart';
 
 class GameDetailsPage extends StatelessWidget {
@@ -22,7 +23,45 @@ class GameDetailsPage extends StatelessWidget {
                 imageUrl: game.backgroundImage!,
               ),
             ),
-            Text(game.name!)
+            Hero(
+              tag: 'title__${game.id!}',
+              transitionOnUserGestures: true,
+              child: Material(
+                type: MaterialType.transparency,
+                child: DefaultTextStyle(
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black),
+                  child: Text(
+                    game.name!,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: game.ratings!.length,
+                itemBuilder: (context, index) => GFListTile(
+                  title: Column(
+                    children: [
+                      Text(
+                        '${game.ratings![index].title!} - ${game.ratings![index].percent}',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w400),
+                      ),
+                      GFProgressBar(
+                        percentage: game.ratings![index].percent! / 100,
+                        lineHeight: 16,
+                        progressBarColor: Colors.blue,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

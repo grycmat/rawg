@@ -36,22 +36,34 @@ class GameWidget extends StatelessWidget {
                     imageUrl: game.backgroundImage!),
               ),
               Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(game.name!, style: const TextStyle(fontSize: 20)),
-                        Row(
-                          children: [
-                            const Icon(Icons.star_outlined,
-                                color: Colors.amber),
-                            Text(game.rating.toString(),
-                                style: const TextStyle(fontSize: 16)),
-                            Text('(${game.ratingsCount.toString()})',
-                                style: const TextStyle(fontSize: 12))
-                          ],
-                        )
-                      ])),
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Material(
+                        type: MaterialType.transparency,
+                        child: Hero(
+                            transitionOnUserGestures: true,
+                            tag: 'title__${game.id!}',
+                            child: DefaultTextStyle(
+                              style: const TextStyle(
+                                  fontSize: 20, color: Colors.black),
+                              child: Text(
+                                game.name!,
+                              ),
+                            )),
+                      ),
+                      Row(
+                        children: [
+                          const Icon(Icons.star_outlined, color: Colors.amber),
+                          Text(game.rating.toString(),
+                              style: const TextStyle(fontSize: 16)),
+                          Text('(${game.ratingsCount.toString()})',
+                              style: const TextStyle(fontSize: 12))
+                        ],
+                      )
+                    ]),
+              ),
             ]),
           ),
         ),
