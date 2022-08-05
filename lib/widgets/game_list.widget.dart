@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rawg/models/api_response/result.dart';
+import 'package:rawg/models/api_response/game.dart';
 import 'package:rawg/widgets/game.widget.dart';
 
 class GameListWidget extends StatelessWidget {

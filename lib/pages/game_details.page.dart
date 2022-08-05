@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:rawg/models/api_response/result.dart';
+import 'package:rawg/models/api_response/game.dart';
 import 'package:rawg/models/api_response/rating.dart';
 
 class GameDetailsPage extends StatelessWidget {

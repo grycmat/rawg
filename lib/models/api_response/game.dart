@@ -103,6 +103,9 @@ class Game {
         platforms: (data['platforms'] as List<dynamic>?)
             ?.map((e) => Platform.fromMap(e as Map<String, dynamic>))
             .toList(),
+        parentPlatforms: (data['parent_platforms'] as List<dynamic>?)
+            ?.map((e) => ParentPlatform.fromMap(e as Map<String, dynamic>))
+            .toList(),
         genres: (data['genres'] as List<dynamic>?)
             ?.map((e) => Genre.fromMap(e as Map<String, dynamic>))
             .toList(),
@@ -144,6 +147,7 @@ class Game {
         'saturated_color': saturatedColor,
         'dominant_color': dominantColor,
         'platforms': platforms?.map((e) => e.toMap()).toList(),
+        'parent_platforms': parentPlatforms?.map((e) => e.toMap()).toList(),
         'genres': genres?.map((e) => e.toMap()).toList(),
         'stores': stores?.map((e) => e.toMap()).toList(),
         'clip': clip,

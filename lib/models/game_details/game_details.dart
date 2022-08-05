@@ -9,7 +9,6 @@ import 'parent_platform.dart';
 import 'platform.dart';
 import 'publisher.dart';
 import 'rating.dart';
-import 'reactions.dart';
 import 'store.dart';
 import 'tag.dart';
 
@@ -30,7 +29,6 @@ class GameDetails {
   double? rating;
   int? ratingTop;
   List<Rating>? ratings;
-  Reactions? reactions;
   int? added;
   AddedByStatus? addedByStatus;
   int? playtime;
@@ -86,7 +84,6 @@ class GameDetails {
     this.rating,
     this.ratingTop,
     this.ratings,
-    this.reactions,
     this.added,
     this.addedByStatus,
     this.playtime,
@@ -148,9 +145,6 @@ class GameDetails {
         ratings: (data['ratings'] as List<dynamic>?)
             ?.map((e) => Rating.fromMap(e as Map<String, dynamic>))
             .toList(),
-        reactions: data['reactions'] == null
-            ? null
-            : Reactions.fromMap(data['reactions'] as Map<String, dynamic>),
         added: data['added'] as int?,
         addedByStatus: data['added_by_status'] == null
             ? null
@@ -227,7 +221,6 @@ class GameDetails {
         'rating': rating,
         'rating_top': ratingTop,
         'ratings': ratings?.map((e) => e.toMap()).toList(),
-        'reactions': reactions?.toMap(),
         'added': added,
         'added_by_status': addedByStatus?.toMap(),
         'playtime': playtime,

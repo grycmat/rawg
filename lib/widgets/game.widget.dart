@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rawg/models/api_response/result.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rawg/models/api_response/game.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:rawg/pages/game_details.page.dart';
+import 'package:rawg/widgets/platform_list.widget.dart';
 
 class GameWidget extends StatelessWidget {
   const GameWidget({Key? key, required this.game}) : super(key: key);
@@ -54,12 +56,23 @@ class GameWidget extends StatelessWidget {
                             )),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Icon(Icons.star_outlined, color: Colors.amber),
-                          Text(game.rating.toString(),
-                              style: const TextStyle(fontSize: 16)),
-                          Text('(${game.ratingsCount.toString()})',
-                              style: const TextStyle(fontSize: 12))
+                          Row(
+                            children: [
+                              const Icon(Icons.star_outlined,
+                                  color: Colors.amber),
+                              Text(
+                                game.rating.toString(),
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                              Text(
+                                '(${game.ratingsCount.toString()})',
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                          PlatformListWidget(platforms: game.parentPlatforms!),
                         ],
                       )
                     ]),

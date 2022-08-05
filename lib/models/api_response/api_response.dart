@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'filters.dart';
-import 'result.dart';
+import 'game.dart';
 
 class ApiResponse {
   int? count;
