@@ -1,25 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:rawg/interceptors/api.interceptor.dart';
 import 'package:rawg/pages/main.page.dart';
 
 var dio = Dio();
 void main() async {
   await dotenv.load(fileName: ".env");
   final apiKey = dotenv.env['API_KEY'];
-  dio.interceptors.add(
-    InterceptorsWrapper(
-      onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-        options.queryParameters = {
-          ...options.queryParameters,
-          'key': dotenv.env['API_KEY']
-        };
-
-        handler.next(options);
-      },
-      onError: (e, handler) => print(e.toString()),
-    ),
-  );
+  dio.interceptors.add(ApiInterceptor());
+  WidgetsFlutterBinding.ensureInitialized();
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 1024 * 1024 * 500;
   runApp(const Rawg());
 }
 

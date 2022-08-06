@@ -20,24 +20,25 @@ class GameDetailsPage extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
+              pinned: true,
               collapsedHeight: 58,
-              title: Hero(
-                tag: 'title__${game.id!}',
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: DefaultTextStyle(
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black),
-                    child: Text(
-                      game.name!,
+              expandedHeight: 190,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Hero(
+                  tag: 'title__${game.id!}',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: DefaultTextStyle(
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
+                      child: Text(
+                        game.name!,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              expandedHeight: 190,
-              flexibleSpace: FlexibleSpaceBar(
                 background: Hero(
                   tag: 'image__${game.id}',
                   child: CachedNetworkImage(
