@@ -1,12 +1,7 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:rawg/models/api_response/api_response.dart';
 import 'package:rawg/pages/main.page.dart';
-
-import 'package:rawg/services/http.service.dart';
 
 var dio = Dio();
 void main() async {
