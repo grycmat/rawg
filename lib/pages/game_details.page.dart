@@ -21,22 +21,30 @@ class GameDetailsPage extends StatelessWidget {
           return <Widget>[
             SliverAppBar(
               collapsedHeight: 58,
-              title: Material(
-                type: MaterialType.transparency,
-                child: DefaultTextStyle(
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black),
-                  child: Text(
-                    game.name!,
+              title: Hero(
+                tag: 'title__${game.id!}',
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: DefaultTextStyle(
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black),
+                    child: Text(
+                      game.name!,
+                    ),
                   ),
                 ),
               ),
-              expandedHeight: 240,
+              expandedHeight: 190,
               flexibleSpace: FlexibleSpaceBar(
-                background: CachedNetworkImage(
-                    fit: BoxFit.cover, imageUrl: game.backgroundImage!),
+                background: Hero(
+                  tag: 'image__${game.id}',
+                  child: CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    imageUrl: game.backgroundImage!,
+                  ),
+                ),
               ),
             )
           ];
@@ -87,12 +95,12 @@ class GameDetailsPage extends StatelessWidget {
   //       child: Column(
   //         mainAxisSize: MainAxisSize.max,
   //         children: [
-  //           Hero(
-  //             tag: 'image__${game.id}',
-  //             child: CachedNetworkImage(
-  //               imageUrl: game.backgroundImage!,
-  //             ),
-  //           ),
+  // Hero(
+  //   tag: 'image__${game.id}',
+  //   child: CachedNetworkImage(
+  //     imageUrl: game.backgroundImage!,
+  //   ),
+  // ),
   //           Hero(
   //             tag: 'title__${game.id!}',
   //             transitionOnUserGestures: true,
