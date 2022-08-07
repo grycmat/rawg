@@ -2,8 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 import 'package:rawg/interceptors/api.interceptor.dart';
 import 'package:rawg/pages/main.page.dart';
+import 'package:rawg/providers/game.provider.dart';
+import 'package:rawg/providers/genre.provider.dart';
 
 var dio = Dio();
 void main() async {
@@ -25,7 +28,17 @@ class Rawg extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(),
+      home: MultiProvider(
+        providers: [
+          Provider<GenreProvider>(
+            create: (_) => GenreProvider(),
+          ),
+          Provider<GameProvider>(
+            create: (_) => GameProvider(),
+          )
+        ],
+        child: const MainPage(),
+      ),
     );
   }
 }
