@@ -14,7 +14,7 @@ class GameProvider {
 
   Future<List<Game>> loadGames() async {
     final response = await HttpService.getGames();
-    final games = ApiResponse.fromMap(response!.data);
+    final games = ApiResponse.fromMap(response.data);
 
     _games = games.results ?? List<Game>.empty();
     return _games as List<Game>;

@@ -32,18 +32,15 @@ class GameWidget extends StatelessWidget {
             child: Column(children: [
               Stack(
                 children: [
-                  Hero(
-                    tag: 'image__${game.id!}',
-                    child: CachedNetworkImage(
-                        placeholder: (context, url) => SkeletonAvatar(
-                              style: SkeletonAvatarStyle(
-                                  height: 190, width: double.infinity),
-                            ),
-                        width: double.infinity,
-                        height: 190,
-                        fit: BoxFit.cover,
-                        imageUrl: game.backgroundImage!),
-                  ),
+                  CachedNetworkImage(
+                      placeholder: (context, url) => SkeletonAvatar(
+                            style: SkeletonAvatarStyle(
+                                height: 190, width: double.infinity),
+                          ),
+                      width: 220,
+                      height: 190,
+                      fit: BoxFit.cover,
+                      imageUrl: game.backgroundImage!),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -64,18 +61,8 @@ class GameWidget extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Material(
-                        type: MaterialType.transparency,
-                        child: Hero(
-                            transitionOnUserGestures: true,
-                            tag: 'title__${game.id!}',
-                            child: DefaultTextStyle(
-                              style: const TextStyle(
-                                  fontSize: 20, color: Colors.black),
-                              child: Text(
-                                game.name!,
-                              ),
-                            )),
+                      Text(
+                        game.name!,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

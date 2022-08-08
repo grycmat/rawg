@@ -16,8 +16,8 @@ class GenreProvider {
 
   loadGenres() async {
     final response = await HttpService.getGenres();
-    if (response?.data) {
-      final genres = GenresResponse.fromMap(response!.data.data);
+    if (response.data) {
+      final genres = GenresResponse.fromMap(response.data.data);
       _genres = genres.results;
     }
     return _genres;
