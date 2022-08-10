@@ -9,10 +9,11 @@ class GameListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: games?.length,
-      itemBuilder: (context, index) => GameWidget(game: games![index]),
-    );
+    return Container();
+    // return ListView.builder(
+    //   scrollDirection: Axis.horizontal,
+    //   itemCount: games?.length,
+    //   itemBuilder: (context, index) => GameWidget(game: games![index]),
+    // );
   }
 }

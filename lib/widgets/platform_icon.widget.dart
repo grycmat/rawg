@@ -9,15 +9,18 @@ class PlatformIconWidget extends StatelessWidget {
   final Platform platform;
   final double _size = 18.0;
 
+  FaIcon _getIcon(IconData icon) =>
+      FaIcon(icon, size: _size, color: const Color.fromRGBO(68, 71, 76, 1));
+
   @override
   Widget build(BuildContext context) {
     switch (platform.slug) {
       case "pc":
-        return FaIcon(FontAwesomeIcons.desktop, size: _size);
+        return _getIcon(FontAwesomeIcons.desktop);
       case "playstation":
-        return FaIcon(FontAwesomeIcons.playstation, size: _size);
+        return _getIcon(FontAwesomeIcons.playstation);
       case "xbox":
-        return FaIcon(FontAwesomeIcons.xbox, size: _size);
+        return _getIcon(FontAwesomeIcons.xbox);
       default:
         return Container();
     }

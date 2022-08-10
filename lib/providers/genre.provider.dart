@@ -1,25 +1,21 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:rawg/models/genres_response/genre.dart';
 import 'package:rawg/models/genres_response/genres_response.dart';
 import 'package:rawg/services/http.service.dart';
 
+@singleton
 class GenreProvider {
-  List<Genre>? _genres;
+  List<Genre> _genres = [];
 
-  Future<List<Genre>> getGenres() async {
-    if (_genres == null) {
-      return loadGenres();
-    }
-    return Future.value(_genres);
-  }
+  Future<List<Genre>> getGenres() async =>
+      _genres.isEmpty ? _loadGenres() : Future.value(_genres);
 
-  loadGenres() async {
-    final response = await HttpService.getGenres();
-    if (response.data) {
-      final genres = GenresResponse.fromMap(response.data.data);
-      _genres = genres.results;
-    }
+  Future<List<Genre>> _loadGenres() async {
+    final response = await HttpService.fetchGenres();
+    final genresResponse = GenresResponse.fromMap(response.data);
+
+    _genres = genresResponse.results ?? [];
+
     return _genres;
   }
 }

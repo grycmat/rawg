@@ -17,26 +17,38 @@ class GamesByGenreWidget extends StatelessWidget {
       itemCount: genres.length,
       itemBuilder: ((context, genreIndex) {
         return Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Container(
-            height: 240,
-            color: Colors.black12,
-            child: Stack(
+            height: 300,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text(genres[genreIndex].name!)],
-                ),
-                ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    for (var game in games)
-                      if (game.genres != null &&
-                          game.genres!.any(
-                              (element) => element.id == genres[genreIndex].id))
-                        GameWidget(game: game)
+                    Text(genres[genreIndex].name!.toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 24,
+                          color: Color.fromRGBO(4, 30, 73, 1),
+                        )),
+                    const Icon(
+                      Icons.chevron_right,
+                      size: 32,
+                    )
                   ],
+                ),
+                Container(
+                  height: 250,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      for (var game in games)
+                        if (game.genres!.any(
+                          (element) => element.id == genres[genreIndex].id,
+                        ))
+                          GameWidget(game: game, genre: genres[genreIndex])
+                    ],
+                  ),
                 ),
               ],
             ),
