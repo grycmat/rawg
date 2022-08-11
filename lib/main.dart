@@ -33,6 +33,7 @@ class Rawg extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          useMaterial3: true,
           appBarTheme: const AppBarTheme(
             color: Color.fromRGBO(233, 239, 248, 1),
           ),

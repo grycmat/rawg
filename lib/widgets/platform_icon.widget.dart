@@ -7,10 +7,20 @@ class PlatformIconWidget extends StatelessWidget {
       : super(key: key);
 
   final Platform platform;
-  final double _size = 18.0;
+  final double _size = 32.0;
 
-  FaIcon _getIcon(IconData icon) =>
-      FaIcon(icon, size: _size, color: const Color.fromRGBO(68, 71, 76, 1));
+  _getIcon(IconData icon) => ElevatedButton(
+      onPressed: () {},
+      child: Container(
+        height: 60,
+        width: 60,
+        child: Padding(
+            padding: EdgeInsets.all(8),
+            child: Center(
+              child: FaIcon(icon,
+                  size: _size, color: const Color.fromRGBO(68, 71, 76, 1)),
+            )),
+      ));
 
   @override
   Widget build(BuildContext context) {

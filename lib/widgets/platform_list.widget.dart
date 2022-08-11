@@ -10,9 +10,12 @@ class PlatformListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: platforms
           .map((e) => Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(12.0),
                 child: PlatformIconWidget(platform: e.platform!),
               ))
           .toList(),

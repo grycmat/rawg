@@ -18,7 +18,7 @@ class GameWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         child: InkWell(
           onTap: () {
             Navigator.of(context).push(
@@ -76,7 +76,6 @@ class GameWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    PlatformListWidget(platforms: game.parentPlatforms!),
                   ],
                 )
               ]),

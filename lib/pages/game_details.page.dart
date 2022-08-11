@@ -4,6 +4,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:rawg/models/api_response/game.dart';
 import 'package:rawg/models/api_response/rating.dart';
 import 'package:rawg/models/genres_response/genre.dart';
+import 'package:rawg/widgets/platform_list.widget.dart';
 
 class GameDetailsPage extends StatelessWidget {
   const GameDetailsPage({Key? key, required this.game, required this.genre})
@@ -11,7 +12,7 @@ class GameDetailsPage extends StatelessWidget {
   final Game game;
   final Genre genre;
 
-  _sortRatings(List<Rating> ratings) =>
+  void _sortRatings(List<Rating> ratings) =>
       ratings.sort((a, b) => b.percent!.compareTo(a.percent!));
 
   @override
@@ -26,15 +27,27 @@ class GameDetailsPage extends StatelessWidget {
               collapsedHeight: 58,
               expandedHeight: 190,
               flexibleSpace: FlexibleSpaceBar(
-                title: Material(
-                  type: MaterialType.transparency,
-                  child: DefaultTextStyle(
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(4, 30, 73, 1),
-                    ),
-                    child: Text(
-                      game.name!,
+                title: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10)),
+                    color: Color.fromRGBO(233, 239, 248, 0.6),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: DefaultTextStyle(
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromRGBO(4, 30, 73, 1),
+                        ),
+                        child: Text(
+                          game.name!,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -46,13 +59,14 @@ class GameDetailsPage extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ];
         },
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              PlatformListWidget(platforms: game.parentPlatforms!),
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: game.ratings!.length,
