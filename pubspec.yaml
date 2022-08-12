@@ -45,6 +45,7 @@ dependencies:
   provider: ^6.0.3
   get_it: ^7.2.0
   injectable: ^1.5.3
+  fl_chart: ^0.55.1
 
 dev_dependencies:
   flutter_test:
