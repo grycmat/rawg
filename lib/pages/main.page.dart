@@ -27,6 +27,28 @@ class MainPage extends StatelessWidget {
               Future.wait([gameProvider.getGames(), genreProvider.getGenres()]),
           builder: (_, AsyncSnapshot<List<List<dynamic>>> snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasError) {
+                return Expanded(
+                  child: Center(
+                    child: Column(
+                      children: const [
+                        Icon(
+                          Icons.error_outline,
+                          size: 46,
+                          color: Color.fromRGBO(4, 30, 73, 1),
+                        ),
+                        Text(
+                          'Something went wrong...',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Color.fromRGBO(4, 30, 73, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }
               if (snapshot.hasData) {
                 final games = snapshot.data?[0] as List<Game>;
                 final genres = snapshot.data?[1] as List<Genre>;

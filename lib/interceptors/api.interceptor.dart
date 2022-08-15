@@ -14,6 +14,6 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    print(err.toString());
+    throw err;
   }
 }

@@ -31,13 +31,14 @@ class Rawg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-            color: Color.fromRGBO(233, 239, 248, 1),
-          ),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          color: Color.fromRGBO(233, 239, 248, 1),
         ),
-        home: const MainPage());
+      ),
+      home: const MainPage(),
+    );
   }
 }
