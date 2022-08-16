@@ -1,16 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:rawg/main.dart';
-import 'package:rawg/models/api_response/api_response.dart';
 import 'package:rawg/models/api_response/game.dart';
 import 'package:rawg/models/genres_response/genre.dart';
 import 'package:rawg/providers/game.provider.dart';
 import 'package:rawg/providers/genre.provider.dart';
-import 'package:rawg/providers/main.provider.dart';
-import 'package:rawg/services/http.service.dart';
-import 'package:rawg/widgets/game_list.widget.dart';
 import 'package:rawg/widgets/games_by_genre.widget.dart';
+import 'package:rawg/widgets/something_wen_wrong.widget.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -28,26 +23,7 @@ class MainPage extends StatelessWidget {
           builder: (_, AsyncSnapshot<List<List<dynamic>>> snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasError) {
-                return Expanded(
-                  child: Center(
-                    child: Column(
-                      children: const [
-                        Icon(
-                          Icons.error_outline,
-                          size: 46,
-                          color: Color.fromRGBO(4, 30, 73, 1),
-                        ),
-                        Text(
-                          'Something went wrong...',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Color.fromRGBO(4, 30, 73, 1),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                return const SomethingWenWrongWidget();
               }
               if (snapshot.hasData) {
                 final games = snapshot.data?[0] as List<Game>;

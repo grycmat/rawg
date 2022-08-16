@@ -9,7 +9,18 @@ class GamesForGenrePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(genre.name!),
+        title: Hero(
+          tag: 'genre_id_${genre.id}',
+          child: Material(
+            child: Text(
+              genre.name!,
+              style: const TextStyle(
+                fontSize: 24,
+                color: Color.fromRGBO(4, 30, 73, 1),
+              ),
+            ),
+          ),
+        ),
       ),
       body: Container(),
     );

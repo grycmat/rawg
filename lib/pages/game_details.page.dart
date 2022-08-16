@@ -29,10 +29,11 @@ class GameDetailsPage extends StatelessWidget {
               flexibleSpace: FlexibleSpaceBar(
                 title: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        bottomLeft: Radius.circular(10)),
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                    ),
                     color: Color.fromRGBO(233, 239, 248, 0.6),
                   ),
                   child: Padding(
@@ -78,7 +79,7 @@ class GameDetailsPage extends StatelessWidget {
                       children: [
                         Text(
                           '${game.ratings![index].title!} - ${game.ratings![index].percent}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w400),
                         ),
                         GFProgressBar(

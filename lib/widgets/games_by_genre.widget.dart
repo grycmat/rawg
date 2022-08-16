@@ -67,11 +67,18 @@ class GamesByGenreWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(genres[genreIndex].name!.toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  color: Color.fromRGBO(4, 30, 73, 1),
-                                )),
+                            Hero(
+                              tag: 'genre_id_${genres[genreIndex].id}',
+                              child: Material(
+                                child: Text(
+                                  genres[genreIndex].name!.toUpperCase(),
+                                  style: const TextStyle(
+                                    fontSize: 24,
+                                    color: Color.fromRGBO(4, 30, 73, 1),
+                                  ),
+                                ),
+                              ),
+                            ),
                             const Icon(
                               Icons.chevron_right,
                               size: 32,
